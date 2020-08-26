@@ -7,6 +7,20 @@ namespace EmployeeDirectoryNET20
         
         public string Name { get; }
         public int Salary { get; }
+        public SalaryLevel SalaryLevel 
+        {
+            get
+            {
+                if(Salary < 15000)
+                {
+                    return SalaryLevel.Junior;
+                }
+                else
+                {
+                    return SalaryLevel.Senior;
+                }
+            } 
+        }
 
 
         public Employee(string name, int salary)
