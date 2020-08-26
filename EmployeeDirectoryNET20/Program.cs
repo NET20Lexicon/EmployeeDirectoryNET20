@@ -5,14 +5,16 @@ namespace EmployeeDirectoryNET20
 {
     class Program
     {
-
+        //Create a new instance of payroll
         static Payroll payroll = new Payroll();
 
         static void Main(string[] args)
         {
+            //Calls Add method on payroll instance
+            //Only for demo purpose to have some data
             SeedData();
 
-            do
+            do //Loop
             {
                 PrintMeny();
 
@@ -34,6 +36,7 @@ namespace EmployeeDirectoryNET20
                     Print();
                     break;
                 case "Q":
+                    //Exit application
                     Environment.Exit(0);
                     break;
                 default:
@@ -43,12 +46,17 @@ namespace EmployeeDirectoryNET20
 
         private static void Print()
         {
+            //Get a copy of the payroll
             Employee[] employees = payroll.GetEmployees();
 
+            //Loop on all employees in payroll
             foreach (Employee employee in employees)
             {
+                //Console.Writeline() method does a .ToString() on the Employee instance
                 Console.WriteLine(employee);
 
+                //Ternary conditional operator
+                //Same as if else
                 Console.WriteLine(employee.SalaryLevel.Equals(SalaryLevel.Junior) ? 
                     DoJuniorWork() : 
                     DoSeniorWork());
@@ -72,11 +80,11 @@ namespace EmployeeDirectoryNET20
             do
             {
                 string name = Util.AskForString("Name: ");
-                if (name == "Q") break;
+                if (name == "Q") break; //Break exits the loop
                 int salary = Util.AskForInt("Salary: ");
                 payroll.AddEmployee(name, salary);
 
-            } while (true);
+            } while (true); //Endleess loop
         }
 
         private static void SeedData()
