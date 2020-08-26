@@ -17,6 +17,8 @@ namespace EmployeeDirectoryNET20
             do
             {
                 string name = Util.AskForString("Name: ");
+                if (name == "Q") break;
+                int salary = Util.AskForInt("Salary: ");
 
             } while (true);
 
