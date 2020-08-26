@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.CompilerServices;
+using System;
 
 namespace EmployeeDirectoryNET20
 {
@@ -10,6 +11,14 @@ namespace EmployeeDirectoryNET20
         static void Main(string[] args)
         {
             SeedData();
+
+            Console.WriteLine("Add a new Employee, Quit with Q");
+
+            do
+            {
+                string name = Util.AskForString("Name: ");
+
+            } while (true);
 
             Employee[] employees = payroll.GetEmployees();
 
