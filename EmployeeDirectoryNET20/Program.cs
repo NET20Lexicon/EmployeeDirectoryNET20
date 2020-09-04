@@ -7,6 +7,7 @@ namespace EmployeeDirectoryNET20
     {
         //Create a new instance of payroll
         static Payroll payroll = new Payroll();
+        private static IUI ui = new ConsoleUI();
 
         static void Main(string[] args)
         {
@@ -23,9 +24,9 @@ namespace EmployeeDirectoryNET20
 
         private static void PrintMeny()
         {
-            Console.WriteLine("1. Add new Employee");
-            Console.WriteLine("2. Print");
-            Console.WriteLine("Q. Quit");
+            ui.Print("1. Add new Employee");
+            ui.Print("2. Print");
+            ui.Print("Q. Quit");
 
             switch (Console.ReadLine())
             {
@@ -53,11 +54,11 @@ namespace EmployeeDirectoryNET20
             foreach (Employee employee in employees)
             {
                 //Console.Writeline() method does a .ToString() on the Employee instance
-                Console.WriteLine(employee);
+                ui.Print(employee.ToString());
 
                 //Ternary conditional operator
                 //Same as if else
-                Console.WriteLine(employee.SalaryLevel.Equals(SalaryLevel.Junior) ? 
+                ui.Print(employee.SalaryLevel.Equals(SalaryLevel.Junior) ? 
                     DoJuniorWork() : 
                     DoSeniorWork());
             }
@@ -75,7 +76,7 @@ namespace EmployeeDirectoryNET20
 
         private static void Add()
         {
-            Console.WriteLine("Add a new Employee, Quit with Q");
+            ui.Print("Add a new Employee, Quit with Q");
 
             do
             {

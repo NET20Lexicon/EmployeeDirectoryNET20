@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 
+[assembly:InternalsVisibleTo("EmployeeDirectory.Tests")]
 namespace EmployeeDirectoryNET20
 {
     internal class Payroll

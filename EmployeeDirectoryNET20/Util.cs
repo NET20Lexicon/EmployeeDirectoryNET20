@@ -5,6 +5,18 @@ namespace EmployeeDirectoryNET20
     //Static class cant make instances of. Exactly as the Console class for example
     internal static class Util
     {
+        private static IUI ui;
+        static Util()
+        {
+            SetUp(new ConsoleUI());
+        }
+
+        public static void SetUp(IUI userInterface)
+        {
+            ui = userInterface;
+        }
+
+
         //must be static in a static class
         //string return type
         //AskForString method name
@@ -15,8 +27,8 @@ namespace EmployeeDirectoryNET20
 
             do //Repeat
             {
-                Console.WriteLine(prompt);
-                answer = Console.ReadLine();
+                ui.Print(prompt);
+                answer = ui.GetInput();
 
                 //If answer is not null or empty string
                 if (!string.IsNullOrEmpty(answer))
@@ -43,7 +55,7 @@ namespace EmployeeDirectoryNET20
 
                 success = int.TryParse(input, out answer);
                 if (!success) 
-                    Console.WriteLine("Wrong format"); //Write error message
+                    ui.Print("Wrong format"); //Write error message
 
             } while (!success);
 
