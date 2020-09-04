@@ -7,12 +7,16 @@ namespace EmployeeDirectoryNET20
     {
         //Create a new instance of payroll
         static Payroll payroll = new Payroll();
-        private static IUI ui = new ConsoleUI();
+        private static IUI ui;
+        //private static Util util = new Util(ui);
 
         static void Main(string[] args)
         {
             //Calls Add method on payroll instance
             //Only for demo purpose to have some data
+            var startUp = new StrartUp();
+            ui = startUp.GetUI();
+
             SeedData();
 
             do //Loop
@@ -80,9 +84,9 @@ namespace EmployeeDirectoryNET20
 
             do
             {
-                string name = Util.AskForString("Name: ");
+                string name = Util.AskForString("Name: ", ui);
                 if (name == "Q") break; //Break exits the loop
-                int salary = Util.AskForInt("Salary: ");
+                int salary = Util.AskForInt("Salary: ", ui);
                 payroll.AddEmployee(name, salary);
 
             } while (true); //Endleess loop

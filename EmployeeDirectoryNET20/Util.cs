@@ -3,24 +3,29 @@
 namespace EmployeeDirectoryNET20
 {
     //Static class cant make instances of. Exactly as the Console class for example
-    internal static class Util
+    internal static  class Util
     {
-        private static IUI ui;
-        static Util()
-        {
-            SetUp(new ConsoleUI());
-        }
+        //private static IUI ui;
 
-        public static void SetUp(IUI userInterface)
-        {
-            ui = userInterface;
-        }
+        //static Util()
+        //{
+        //    SetUp(new ConsoleUI());
+        //}
+
+        //public static void SetUp(IUI userInterface)
+        //{
+        //    ui = userInterface;
+        //}
+        //public Util(IUI ui)
+        //{
+        //    Util.ui = ui;
+        //}
 
 
         //must be static in a static class
         //string return type
         //AskForString method name
-        internal static string AskForString(string prompt)
+        internal static string AskForString(string prompt, IUI ui)
         {
             bool success = false;
             string answer; //Scope
@@ -42,7 +47,7 @@ namespace EmployeeDirectoryNET20
             return answer; //return value
         }
 
-        internal static int AskForInt(string prompt)
+        internal static int AskForInt(string prompt, IUI ui)
         {
             bool success = false;
             int answer; //Scope
@@ -51,7 +56,7 @@ namespace EmployeeDirectoryNET20
             {
                 //Try to parse string to int returns bool
                 //If true exit loop
-                string input = AskForString(prompt);
+                string input = AskForString(prompt, ui);
 
                 success = int.TryParse(input, out answer);
                 if (!success) 

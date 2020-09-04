@@ -1,6 +1,6 @@
 ﻿namespace EmployeeDirectoryNET20
 {
-    interface IUI
+    public interface IUI
     {
         string GetInput();
         void Print(string message);
